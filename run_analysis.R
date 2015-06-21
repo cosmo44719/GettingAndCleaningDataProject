@@ -72,4 +72,4 @@ activity_subject_avg_data <- ddply(complete_data, .(subject_id, activity),
                                    function(x) colMeans(x[, 3:68]))
 
 ## Write to file
-write.table(activity_subject_avg_data, "activity_subject_avg_data.txt")
+write.table(activity_subject_avg_data, "activity_subject_avg_data.txt", row.name=FALSE)
