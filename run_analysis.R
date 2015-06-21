@@ -1,5 +1,6 @@
 library(plyr)
 
+## 0.
 ## download and unzip data
 fileURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 download.file(fileURL,
@@ -30,6 +31,7 @@ subject_data <- rbind(subject_test, subject_train)
 ## standard deviation for each measurement.
 
 ## retrive places in features where "-mean()" or "-std()" is present
+features <- read.table("features.txt")
 mean_std_indeces <- grep("-(mean|std)\\(\\)", features[, 2])
 
 ## subset X_data
@@ -52,7 +54,6 @@ y_data[, 1] <- activities[y_data[, 1], 2]
 
 ## read features and then
 ## rename X_data variable by features
-features <- read.table("features.txt")
 old_names <- as.character(names(X_data))
 new_names <- as.character(features$V2)
 setnames(X_data, old_names, new_names)
